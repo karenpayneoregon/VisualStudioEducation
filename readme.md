@@ -7,7 +7,7 @@ The intent for this repository is to introduce seasoned developers in any major 
 By following what is presented will assist developers when training becomes available here by a vendor.
 
 ## C# 7 (or higher) programming language 
-**Note**: While working with code many of the code samples will show old school methods to accomplish a task then a secondary example will show current conventions while discussing alternates hybrid solutions. Alternate and hybrid solutions are intermediate level ways to complete a task, which in many cases does not hinder performance. 
+> While working with code many of the code samples will show old school methods to accomplish a task then a secondary example will show current conventions while discussing alternates hybrid solutions. Alternate and hybrid solutions are intermediate level ways to complete a task, which in many cases does not hinder performance. 
 
 Example: The task is to display a person's first and last name.
 ```csharp
