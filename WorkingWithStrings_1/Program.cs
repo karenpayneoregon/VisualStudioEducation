@@ -13,6 +13,9 @@ namespace WorkingWithStrings_1
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Explicit assignment
+        /// </summary>
         static void OldSchool()
         {
             string firstName = "Karen";
@@ -21,6 +24,9 @@ namespace WorkingWithStrings_1
             Console.WriteLine(firstName + " " + lastName);
 
         }
+        /// <summary>
+        /// Implicit assignment
+        /// </summary>
         static void CurrentConventions()
         {
             var firstName = "Karen";

@@ -12,6 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StringBasics", "StringBasic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithStrings_1", "WorkingWithStrings_1\WorkingWithStrings_1.csproj", "{8148F962-6AC5-4C6F-9F4C-C76ECFE0DC17}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NumericBasics", "NumericBasics", "{98728321-3898-49E3-9FB0-8CD95A969C93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{D11619EC-E4BE-44A6-88C2-DB2AA8EB3668}"
+	ProjectSection(SolutionItems) = preProject
+		LessonsDocumentation\StringType\Strings.md = LessonsDocumentation\StringType\Strings.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
