@@ -31,3 +31,6 @@ Console.WriteLine($"{firstName} {lastName}");
 
 ## Visual Studio
 "How to" in Visual Studio will be broken down into separate pages within this repository to perform common task.
+
+- [Working with strings](https://github.com/karenpayneoregon/VisualStudioEducation/tree/master/LessonsDocumentation/StringType/Strings.md) 
+- 
