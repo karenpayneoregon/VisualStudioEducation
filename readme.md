@@ -32,5 +32,9 @@ Console.WriteLine($"{firstName} {lastName}");
 ## Visual Studio
 "How to" in Visual Studio will be broken down into separate pages within this repository to perform common task.
 
+- Visual Studio [navigating the IDE](https://github.com/karenpayneoregon/VisualStudioEducation/blob/master/VisualStudio/VisualStudioShortcuts.md).
+
+
+## C# Basics
+The following section provides basics for getting started with C# programming language.
 - [Working with strings](https://github.com/karenpayneoregon/VisualStudioEducation/tree/master/LessonsDocumentation/StringType/Strings.md) 
-- 
