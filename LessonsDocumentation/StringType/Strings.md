@@ -87,3 +87,4 @@ public static bool IsNullOrWhiteSpace(this string sender)
 }
 ```
 
+[Back to main page](https://github.com/karenpayneoregon/VisualStudioEducation).
