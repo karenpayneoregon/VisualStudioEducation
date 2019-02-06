@@ -32,7 +32,7 @@ Console.WriteLine($"{firstName} {lastName}");
 ## Visual Studio
 "How to" in Visual Studio will be broken down into separate pages within this repository to perform common task.
 
-- Visual Studio [navigating the IDE](https://github.com/karenpayneoregon/VisualStudioEducation/blob/master/VisualStudio/VisualStudioShortcuts.md).
+- Visual Studio [general topics](https://github.com/karenpayneoregon/VisualStudioEducation/blob/master/VisualStudio/VisualStudioShortcuts.md).
 
 
 ## C# Basics
