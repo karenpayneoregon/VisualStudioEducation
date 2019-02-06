@@ -86,3 +86,4 @@ public static bool IsNullOrWhiteSpace(this string sender)
     return string.IsNullOrWhiteSpace(sender);
 }
 ```
+
