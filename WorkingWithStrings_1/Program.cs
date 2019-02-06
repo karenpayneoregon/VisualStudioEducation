@@ -9,7 +9,7 @@ namespace WorkingWithStrings_1
     class Program
     {
         /// <summary>
-        /// 
+        /// Home
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
