@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseClasses\Person.cs" />
+    <Compile Include="Classes\AuditLog.cs" />
+    <Compile Include="Classes\Person1.cs" />
+    <Compile Include="Classes\Person2.cs" />
     <Compile Include="Extensions\DataCommandParameterExtensions.cs" />
     <Compile Include="Extensions\DataExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
@@ -55,6 +59,7 @@
     <Compile Include="Extensions\TimeSpanExtensions.cs" />
     <Compile Include="Validators\EntityValidationResult.cs" />
     <Compile Include="Validators\EntityValidator.cs" />
+    <Compile Include="Validators\Rules\SocialSecurityAttribute.cs" />
     <Compile Include="Validators\ValidationHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

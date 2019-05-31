@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BasicClasses.BaseClasses;
+using TeamLibrary.BaseClasses;
 using TeamLibrary.Interfaces;
 
-namespace BasicClasses.Classes
+namespace TeamLibrary.Classes
 {
     public class Person2 : Person, IBaseEntity
     {

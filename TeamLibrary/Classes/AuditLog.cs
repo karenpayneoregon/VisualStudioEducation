@@ -1,7 +1,7 @@
 ﻿using System;
 using TeamLibrary.Interfaces;
 
-namespace BasicClasses.Classes
+namespace TeamLibrary.Classes
 {
     public class AuditLog : IBaseEntity
     {
