@@ -2,7 +2,7 @@
 using System.Data;
 using System.Diagnostics;
 
-namespace TeamLibrary
+namespace TeamLibrary.Extensions
 {
     public static class DataExtensions
     {

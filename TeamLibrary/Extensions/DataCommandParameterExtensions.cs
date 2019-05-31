@@ -3,7 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 
-namespace TeamLibrary
+namespace TeamLibrary.Extensions
 {
     /// <summary>
     /// Data providers for <see cref="DataCommandParameterExtensions.ActualCommandText"/>

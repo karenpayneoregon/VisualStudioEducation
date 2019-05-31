@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace TeamLibrary
+namespace TeamLibrary.Extensions
 {
     public static class DateTimeExtensions
     {

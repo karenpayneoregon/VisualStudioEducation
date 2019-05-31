@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C5B92CBF-BF6C-4626-9042-C6B15BC9EA81}</ProjectGuid>
+    <ProjectGuid>{B95B3E99-471F-44BB-AB0A-B0FE8C65D842}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TeamLibrary</RootNamespace>
-    <AssemblyName>TeamLibrary</AssemblyName>
+    <RootNamespace>BasicClasses</RootNamespace>
+    <AssemblyName>BasicClasses</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,20 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\DataCommandParameterExtensions.cs" />
-    <Compile Include="Extensions\DataExtensions.cs" />
-    <Compile Include="Extensions\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Extensions\GenericExtensions.cs" />
-    <Compile Include="Interfaces\IBaseEntity.cs" />
-    <Compile Include="Extensions\NumericArray.cs" />
-    <Compile Include="Extensions\NumericExtensions.cs" />
+    <Compile Include="BaseClasses\Person.cs" />
+    <Compile Include="Classes\AuditLog.cs" />
+    <Compile Include="Classes\Person2.cs" />
+    <Compile Include="Classes\Person1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Extensions\TimeSpanExtensions.cs" />
-    <Compile Include="Validators\EntityValidationResult.cs" />
-    <Compile Include="Validators\EntityValidator.cs" />
-    <Compile Include="Validators\ValidationHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PartialClasses\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TeamLibrary\TeamLibrary.csproj">
+      <Project>{c5b92cbf-bf6c-4626-9042-c6b15bc9ea81}</Project>
+      <Name>TeamLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

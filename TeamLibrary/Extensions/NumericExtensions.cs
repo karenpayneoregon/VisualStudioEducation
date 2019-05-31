@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TeamLibrary
+namespace TeamLibrary.Extensions
 {
     /// <summary>
     /// Various language extension methods to extend numeric types

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TeamLibrary
+namespace TeamLibrary.Extensions
 {
     /// <summary>
     /// Various generic language extension methods

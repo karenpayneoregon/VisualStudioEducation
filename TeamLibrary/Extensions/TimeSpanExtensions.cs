@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Linq;
 
-namespace TeamLibrary
+namespace TeamLibrary.Extensions
 {
 
     public static class TimeSpanExtensions

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace TeamLibrary
+namespace TeamLibrary.Extensions
 {
     public static class NumericArray
     {

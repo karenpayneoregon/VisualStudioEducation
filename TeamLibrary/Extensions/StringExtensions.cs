@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace TeamLibrary
+namespace TeamLibrary.Extensions
 {
     /// <summary>
     /// Common string extensions

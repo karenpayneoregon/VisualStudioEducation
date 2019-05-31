@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TeamLibrary
+namespace TeamLibrary.Extensions
 {
 
     public static class EnumExtensions
