@@ -3,7 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TeamLibrary.BaseClasses;
 using TeamLibrary.Classes;
+using TeamLibrary.Extensions;
 using TeamLibrary.Validators;
 using VariousTest.BaseClasses;
 
@@ -29,9 +31,13 @@ namespace VariousTest
         [TestMethod]
         public void ValidatePersonMissingFirstLastNameTest()
         {
-            var expectedErrorMessages = new string[] { "Contact FirstName is required", "Contact LastName is required" };
+            var expectedErrorMessages = new string[]
+            {
+                "Contact FirstName is required",
+                "Contact LastName is required"
+            };
 
-            var person = new Person2()
+            var person = new Person()
             {
                 BirthDate = new DateTime(1956, 9, 24)
             };
@@ -47,12 +53,19 @@ namespace VariousTest
         [TestMethod]
         public void DisplayPersonSsnTest()
         {
-            var person = KarenPayne;
-            person.SSN = "123456789";
-            var validationResult = ValidationHelper.ValidateEntity(KarenPayne);
-            var test = validationResult.HasError;
-            Assert.IsFalse(validationResult.HasError,
-                "Expected person to validate");
+            var person = new Person()
+            {
+                SSN = "12345678".Replace("-",""),
+                FirstName = "Karen",
+                LastName = "Payne",
+                BirthDate = new DateTime(1956, 9, 24)
+            };
+
+            var validationResult = ValidationHelper.ValidateEntity(person);
+            
+            Assert.IsTrue(validationResult.HasError,
+                "Expected person not be valid, bad SSN");
+
 
 
         }

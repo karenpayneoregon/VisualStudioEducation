@@ -4,6 +4,10 @@ The intent for this repository is to introduce seasoned developers in any major 
 - C# programming language basics.
 - Navigating Visual Studio's IDE.
 
+Good links to get started with
+- [Visual Studio Documentation](https://docs.microsoft.com/en-us/visualstudio/?view=vs-2019) (very informative and lengthy)
+- [Learning the code editor](https://docs.microsoft.com/en-us/visualstudio/get-started/tutorial-editor?view=vs-2019) in Visual Studio.
+
 By following what is presented will assist developers when training becomes available here by a vendor.
 
 ## C# 7 (or higher) programming language 

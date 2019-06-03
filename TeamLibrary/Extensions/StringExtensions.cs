@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -14,10 +15,46 @@ namespace TeamLibrary.Extensions
         /// </summary>
         /// <param name="sender">String to test if null or whitespace</param>
         /// <returns>true if empty or false if not empty</returns>
+        [DebuggerStepThrough]
         public static bool IsNullOrWhiteSpace(this string sender)
         {
             return string.IsNullOrWhiteSpace(sender);
         }
+        /// <summary>
+        /// Is a valid SSN
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>True if valid, false if invalid SSN</returns>
+        /// <remarks>
+        ///
+        /// https://www.codeproject.com/Articles/651609/Validating-Social-Security-Numbers-through-Regular
+        /// 
+        /// Handle some commonly encountered “fake” values or ones that might easily be forged in
+        /// an area that might require a user to enter one.
+        /// 
+        /// ^                                       #Start of expression
+        /// (?!\b(\d)\1+-(\d)\1+-(\d)\1+\b)         #Don't allow all matching digits for every field
+        /// (?!123-45-6789|219-09-9999|078-05-1120) #Don't allow "123-45-6789", "219-09-9999" or "078-05-1120"
+        /// (?!666|000|9\d{2})\d{3}                 #Don't allow the SSN to begin with 666, 000 or anything between 900-999
+        /// -                                       #A dash (separating Area and Group numbers)
+        /// (?!00)\d{2}                             #Don't allow the Group Number to be "00"
+        /// -                                       #Another dash (separating Group and Serial numbers)
+        /// (?!0{4})\d{4}                           #Don't allow last four digits to be "0000"
+        /// $                                       #End of expression
+        /// </remarks>
+        [DebuggerStepThrough]
+        public static bool IsValidSsnWithoutDashes(this string value) =>
+            Regex.IsMatch(value.Replace("-", ""),
+                @"^(?!\b(\d)\1+\b)(?!123456789|219099999|078051120)(?!666|000|9\d{2})\d{3}(?!00)\d{2}(?!0{4})\d{4}$");
+
+        [DebuggerStepThrough]
+        public static bool IsValidSsnSimple(this string value)
+        {
+            var regexItem = new Regex(@"^\d{9}$");
+            var matcher = regexItem.Match(value);
+            return matcher.Success;
+        }
+
         /// <summary>
         /// Overload of the standard String.Contains method which provides case sensitivity.
         /// </summary>
