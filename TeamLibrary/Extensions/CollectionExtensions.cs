@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeamLibrary.Diagnostics;
 
 namespace TeamLibrary.Extensions
 {
@@ -23,6 +24,16 @@ namespace TeamLibrary.Extensions
                 sender.Add(pValue);
             }
             return alreadyHasValue;
+        }
+        public static void AddRange<T>(this ICollection<T> source, IEnumerable<T> items)
+        {
+            Verify.Argument(nameof(items)).WithValue(items).IsNotNull();
+
+            if (!items.IsNullOrEmpty())
+            {
+                foreach (var item in items)
+                    source.Add(item);
+            };
         }
         /// <summary>
         /// Provides distinct on a property

@@ -45,6 +45,11 @@
     <Compile Include="BaseClasses\Person.cs" />
     <Compile Include="Classes\AuditLog.cs" />
     <Compile Include="Classes\Person.cs" />
+    <Compile Include="Diagnostics\AndArgumentConstraint.cs" />
+    <Compile Include="Diagnostics\Argument.cs" />
+    <Compile Include="Diagnostics\ArgumentConstraint.cs" />
+    <Compile Include="Diagnostics\ObjectArgumentConstraintExtensions.cs" />
+    <Compile Include="Diagnostics\Verify.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\DataCommandParameterExtensions.cs" />
     <Compile Include="Extensions\DataExtensions.cs" />
