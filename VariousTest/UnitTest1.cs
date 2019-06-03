@@ -51,7 +51,7 @@ namespace VariousTest
 
         }
         [TestMethod]
-        public void DisplayPersonSsnTest()
+        public void DisplayPersonSsnTest(object value)
         {
             var person = new Person()
             {
@@ -67,6 +67,12 @@ namespace VariousTest
                 "Expected person not be valid, bad SSN");
 
 
+            bool result;
+            if (value is bool booleanResult)
+            {
+                result = booleanResult;
+
+            };
 
         }
     }

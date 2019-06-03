@@ -45,11 +45,12 @@
     <Compile Include="BaseClasses\Person.cs" />
     <Compile Include="Classes\AuditLog.cs" />
     <Compile Include="Classes\Person.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\DataCommandParameterExtensions.cs" />
     <Compile Include="Extensions\DataExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Extensions\GenericExtensions.cs" />
+    <Compile Include="Extensions\ComparableExtensions.cs" />
     <Compile Include="Extensions\ObjectHelpers.cs" />
     <Compile Include="Interfaces\IBaseEntity.cs" />
     <Compile Include="Extensions\NumericArray.cs" />

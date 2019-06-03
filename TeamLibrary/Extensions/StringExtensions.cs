@@ -16,10 +16,8 @@ namespace TeamLibrary.Extensions
         /// <param name="sender">String to test if null or whitespace</param>
         /// <returns>true if empty or false if not empty</returns>
         [DebuggerStepThrough]
-        public static bool IsNullOrWhiteSpace(this string sender)
-        {
-            return string.IsNullOrWhiteSpace(sender);
-        }
+        public static bool IsWhitespace(this string sender) => String.IsNullOrWhiteSpace(sender);
+
         /// <summary>
         /// Is a valid SSN
         /// </summary>
