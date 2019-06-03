@@ -51,7 +51,7 @@ namespace VariousTest
 
         }
         [TestMethod]
-        public void DisplayPersonSsnTest(object value)
+        public void DisplayPersonSsnTest()
         {
             var person = new Person()
             {
@@ -65,14 +65,6 @@ namespace VariousTest
             
             Assert.IsTrue(validationResult.HasError,
                 "Expected person not be valid, bad SSN");
-
-
-            bool result;
-            if (value is bool booleanResult)
-            {
-                result = booleanResult;
-
-            };
 
         }
     }

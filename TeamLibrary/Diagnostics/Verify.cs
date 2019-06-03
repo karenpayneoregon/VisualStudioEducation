@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace TeamLibrary.Diagnostics
 {
+    /*
+     * https://github.com/CoolDadTx/kraken
+     */
     [DebuggerStepThrough]
     public static class Verify
     {

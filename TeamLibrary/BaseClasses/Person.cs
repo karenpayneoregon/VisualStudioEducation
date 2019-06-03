@@ -23,6 +23,7 @@ namespace TeamLibrary.BaseClasses
         [Required(ErrorMessage = "Contact {0} is required")]
         [DataType(DataType.DateTime)]
         public DateTime? BirthDate { get; set; }
+        
 
     }
 }
