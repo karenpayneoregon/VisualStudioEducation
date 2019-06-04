@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d90cea7d68ff4f82ab6045b2323046e7" Name="Diagram1" >
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Category" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Contact" Width="1.5" PointX="1.5" PointY="23" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.ContactType" Width="1.5" PointX="1.5" PointY="20.75" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Country" Width="1.5" PointX="1.5" PointY="18.375" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Customer" Width="1.5" PointX="3.75" PointY="19.5" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Department" Width="1.5" PointX="5.75" PointY="8.5" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Employee" Width="1.5" PointX="3.75" PointY="10.75" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Karen" Width="1.5" PointX="0.75" PointY="9.5" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Order_Detail" Width="1.5" PointX="8.25" PointY="4.5" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Order" Width="1.5" PointX="6" PointY="15.625" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Product" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Shipper" Width="1.5" PointX="3.75" PointY="15.875" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Supplier" Width="1.5" PointX="0.75" PointY="4" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.TableName" Width="1.5" PointX="7.75" PointY="8.5" />
+        <EntityTypeShape EntityType="NorthWindAzureForInsertsModel.Type" Width="1.5" PointX="5.25" PointY="4.375" />
+        <AssociationConnector Association="NorthWindAzureForInsertsModel.FK_Products_Categories" />
+        <AssociationConnector Association="NorthWindAzureForInsertsModel.FK_Customers_Contacts" />
+        <AssociationConnector Association="NorthWindAzureForInsertsModel.FK_Customers_ContactType" />
+        <AssociationConnector Association="NorthWindAzureForInsertsModel.FK_Customers_Countries" />
+        <AssociationConnector Association="NorthWindAzureForInsertsModel.FK_Orders_Customers2" />
+        <AssociationConnector Association="NorthWindAzureForInsertsModel.FK_Orders_Employees" />
+        <AssociationConnector Association="NorthWindAzureForInsertsModel.FK_Order_Details_Orders" />
+        <AssociationConnector Association="NorthWindAzureForInsertsModel.FK_Order_Details_Products" />
+        <AssociationConnector Association="NorthWindAzureForInsertsModel.FK_Orders_Shippers" />
+        <AssociationConnector Association="NorthWindAzureForInsertsModel.FK_Products_Suppliers" />
+        <AssociationConnector Association="NorthWindAzureForInsertsModel.FK_Types_Products" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

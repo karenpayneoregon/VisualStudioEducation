@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -42,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseClasses\Company.cs" />
     <Compile Include="BaseClasses\Person.cs" />
     <Compile Include="Classes\AuditLog.cs" />
     <Compile Include="Classes\Person.cs" />
@@ -50,6 +57,7 @@
     <Compile Include="Diagnostics\ArgumentConstraint.cs" />
     <Compile Include="Diagnostics\ObjectArgumentConstraintExtensions.cs" />
     <Compile Include="Diagnostics\Verify.cs" />
+    <Compile Include="EntityFrameworkClasses\NorthWindDatabaseOperations.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\DataCommandParameterExtensions.cs" />
     <Compile Include="Extensions\DataExtensions.cs" />
@@ -66,6 +74,16 @@
     <Compile Include="Validators\EntityValidator.cs" />
     <Compile Include="Validators\Rules\SocialSecurityAttribute.cs" />
     <Compile Include="Validators\ValidationHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NorthWindEntityLibrary\NorthWindEntityLibrary.csproj">
+      <Project>{6B9ADC5F-EF69-4ACC-8C1A-0106F652FD14}</Project>
+      <Name>NorthWindEntityLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

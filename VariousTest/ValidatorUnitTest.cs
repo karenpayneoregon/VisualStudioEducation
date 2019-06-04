@@ -8,11 +8,12 @@ using TeamLibrary.Classes;
 using TeamLibrary.Extensions;
 using TeamLibrary.Validators;
 using VariousTest.BaseClasses;
+using VariousTest.Traits;
 
 namespace VariousTest
 {
     [TestClass(), TestCategory("Validators")]
-    public class UnitTest1 : TestBase
+    public class ValidatorUnitTest : TestBase
     {
         /// <summary>
         /// Validate the validator accepts a good instance of person
@@ -51,6 +52,7 @@ namespace VariousTest
 
         }
         [TestMethod]
+        [TestTraits(Trait.ValidatingSocialSecurity)]
         public void DisplayPersonSsnTest()
         {
             var person = new Person()
