@@ -13,32 +13,33 @@ namespace TeamLibrary.EntityFrameworkClasses
         /// <summary>
         /// anonymous objects for join operations
         /// </summary>
-        public void Simple()
+        public Company GetCompanyByCustomerIdentifier(int pIdentifier)
         {
-            var customerIdentifier = 4;
+
             using (var context = new NorthWindEntities())
             {
                 // execute immediately 
                 var results = context.Customers
                     .Join(context.Contacts, customer => customer.CustomerIdentifier,contact => contact.ContactId, (customer, ct) => new {Customer = customer, Contact = ct})
-                    .FirstOrDefault(item => item.Customer.CustomerIdentifier == customerIdentifier);
+                    .FirstOrDefault(item => item.Customer.CustomerIdentifier == pIdentifier);
 
                 // deferred execution
                 var query = from company in context.Customers
                             join contact in context.Contacts on company.ContactId equals contact.ContactId
                             join contactType in context.ContactTypes on contact.ContactId equals contactType.ContactTypeIdentifier
-                            where company.CustomerIdentifier == customerIdentifier
+                            where company.CustomerIdentifier == pIdentifier
                             select new Company
                             {
-                                Id = customerIdentifier,
+                                Id = pIdentifier,
                                 Name = company.CompanyName,
                                 FirstName =company.Contact.FirstName,
                                 LastName = company.Contact.LastName,
                                 Title = company.ContactType.ContactTitle
                             };
 
-                var test = query.FirstOrDefault();
-                Console.WriteLine();
+
+                return query.FirstOrDefault();
+
             }
         }
     }
