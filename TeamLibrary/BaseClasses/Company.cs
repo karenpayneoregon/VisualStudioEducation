@@ -17,5 +17,17 @@ namespace TeamLibrary.BaseClasses
         {
             return $"{Id}, '{Name}'";
         }
+        public override bool Equals(object obj)
+        {
+            var other = obj as Company;
+
+            if (other == null)
+                return false;
+
+            if (FirstName != other.FirstName || LastName != other.LastName)
+                return false;
+
+            return true;
+        }
     }
 }

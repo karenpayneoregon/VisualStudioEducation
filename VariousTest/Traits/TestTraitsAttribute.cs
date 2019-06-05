@@ -7,6 +7,7 @@ namespace VariousTest.Traits
     public enum Trait
     {
         ValidatingSocialSecurity,
+        ObjectsComparer,
         ExtensionMethods
     }
 
