@@ -68,7 +68,6 @@
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\ComparableExtensions.cs" />
-    <Compile Include="Interfaces\IBaseEntity.cs" />
     <Compile Include="Extensions\NumericArray.cs" />
     <Compile Include="Extensions\NumericExtensions.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
@@ -91,6 +90,10 @@
     <ProjectReference Include="..\NorthWindEntityLibrary\NorthWindEntityLibrary.csproj">
       <Project>{6B9ADC5F-EF69-4ACC-8C1A-0106F652FD14}</Project>
       <Name>NorthWindEntityLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj">
+      <Project>{314364C8-C7F9-401A-8F7E-79B65631BB50}</Project>
+      <Name>SharedLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

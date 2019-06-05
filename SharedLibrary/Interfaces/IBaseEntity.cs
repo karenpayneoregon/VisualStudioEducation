@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TeamLibrary.Interfaces
+namespace SharedLibrary.Interfaces 
 {
     public interface IBaseEntity
     {

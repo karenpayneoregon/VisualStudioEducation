@@ -1,4 +1,5 @@
 ﻿using System;
+using SharedLibrary.Interfaces;
 using TeamLibrary.Interfaces;
 
 namespace TeamLibrary.Classes
