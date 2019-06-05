@@ -18,9 +18,7 @@ namespace VariousTest
         {
             var customer1 = new Company() { FirstName = "Karen", LastName = "Payne" };
             var customer2 = new Company() { FirstName = "Mary", LastName = "Jackson" };
-            var customer3 = new Company() { FirstName = "Bill", LastName = "Adams" };
 
-            var cust1 = new List<Company>() { customer1, customer2, customer3 };
             var cust2 = new List<Company>() { customer1, customer2 };
 
             Assert.IsTrue(cust2.Any(cust => cust.FirstName == "Karen" && cust.LastName == "Payne"),

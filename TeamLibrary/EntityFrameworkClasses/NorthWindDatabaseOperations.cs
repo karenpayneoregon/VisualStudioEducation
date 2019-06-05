@@ -10,9 +10,6 @@ namespace TeamLibrary.EntityFrameworkClasses
 {
     public class NorthWindDatabaseOperations
     {
-        /// <summary>
-        /// anonymous objects for join operations
-        /// </summary>
         public Company GetCompanyByCustomerIdentifier(int pIdentifier)
         {
 
@@ -39,6 +36,38 @@ namespace TeamLibrary.EntityFrameworkClasses
 
 
                 return query.FirstOrDefault();
+
+            }
+        }
+        public Company GetCompanyWithCountryByIdentifier(int pIdentifier)
+        {
+
+            using (var context = new NorthWindEntities())
+            {
+                /*
+                 * Uncomment to see generated SQL in test output window
+                 */
+                //context.Database.Log = Console.Write;
+
+
+                var companyQuery = from company in context.Customers
+                    join contact       in context.Contacts       on company.ContactId                  equals contact.ContactId
+                    join contactType   in context.ContactTypes   on contact.ContactId                  equals contactType.ContactTypeIdentifier
+                    join country       in context.Countries      on company.Country.CountryIdentifier  equals  country.CountryIdentifier
+                    where company.CustomerIdentifier == pIdentifier
+                    select new Company
+                    {
+                        Id = pIdentifier,
+                        Name = company.CompanyName,
+                        FirstName = company.Contact.FirstName,
+                        LastName = company.Contact.LastName,
+                        Title = company.ContactType.ContactTitle,
+                        Country = company.Country.Name,
+                        CountryId = company.CountryIdentifier.Value
+                    };
+
+
+                return companyQuery.FirstOrDefault();
 
             }
         }

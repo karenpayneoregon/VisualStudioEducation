@@ -16,16 +16,33 @@ namespace VariousTest
         [TestMethod]
         public void CompareEntityObjectToLocalInstanceTest()
         {
-            int customerIdentifier = 4;
+            var customerIdentifier = 4;
             var ops = new NorthWindDatabaseOperations();
             var customer = ops.GetCompanyByCustomerIdentifier(customerIdentifier);
 
             var comparer = new ObjectsComparer.Comparer<Company>();
 
-            //Compare objects
-            IEnumerable<Difference> differences;
-            var isEqual = comparer.Compare(customer, AroundTheHorn, out differences);
+            var isEqual = comparer.Compare(customer, AroundTheHorn, out var differences);
             Assert.IsTrue(isEqual);
+        }
+        [TestMethod]
+        public void GetCompanyWithCountryByIdentifier()
+        {
+            var customerIdentifier = 4;
+            var ops = new NorthWindDatabaseOperations();
+            var customer = ops.GetCompanyWithCountryByIdentifier(customerIdentifier);
+
+            var customer1 = AroundTheHorn;
+            customer1.CountryId = 19;
+            customer1.Country = "UK";
+
+            var comparer = new ObjectsComparer.Comparer<Company>();
+
+            var isEqual = comparer.Compare(customer1, customer, out var differences);
+            Assert.IsTrue(isEqual, 
+                "expected customer country test to be the same");
+
+
         }
         /// <summary>
         /// Test ObjectsComparer functionality
@@ -37,7 +54,7 @@ namespace VariousTest
         [TestTraits(Trait.ObjectsComparer)]
         public void ObjectsComparerValueMismatchTest()
         {
-            int customerIdentifier = 4;
+            var customerIdentifier = 4;
             var ops = new NorthWindDatabaseOperations();
             var customer = ops.GetCompanyByCustomerIdentifier(customerIdentifier);
             //Assert.IsTrue(customer.Equals(AroundTheHorn));
@@ -46,9 +63,7 @@ namespace VariousTest
 
             var comparer = new ObjectsComparer.Comparer<Company>();
 
-            //Compare objects
-            IEnumerable<Difference> differences;
-            var positiveCompare = comparer.Compare(customer, customer1, out differences);
+            var positiveCompare = comparer.Compare(customer, customer1, out var differences);
             Assert.IsFalse(positiveCompare);
 
             var diff = differences.FirstOrDefault();
