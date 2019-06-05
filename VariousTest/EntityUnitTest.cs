@@ -33,6 +33,7 @@ namespace VariousTest
             var customer = ops.GetCompanyWithCountryByIdentifier(customerIdentifier);
 
             var customer1 = AroundTheHorn;
+            customer1.ContactIdentifier = 4;
             customer1.CountryId = 19;
             customer1.Country = "UK";
 
@@ -42,8 +43,24 @@ namespace VariousTest
             Assert.IsTrue(isEqual, 
                 "expected customer country test to be the same");
 
-
         }
+        /// <summary>
+        /// This shows how to test an update using a detached entity.
+        /// A well coded test would use mocked data or live data where
+        /// live data would automatically be reset. See Karen's example
+        /// https://code.msdn.microsoft.com/C-Entity-Framework-6-unit-f5a12725?redir=0
+        /// </summary>
+        [TestMethod]
+        public void UpdateCustomerContactFirstLastNameTest()
+        {
+            var company = new Company() { ContactIdentifier = 4, FirstName = "Karen", LastName = "Payne"};
+            var ops = new NorthWindDatabaseOperations();
+            Assert.IsTrue(ops.UpdateCompanyContactFirstLastName(company));
+            company.FirstName = "Thomas";
+            company.LastName = "Hardy";
+            Assert.IsTrue(ops.UpdateCompanyContactFirstLastName(company));
+
+        } 
         /// <summary>
         /// Test ObjectsComparer functionality
         /// </summary>

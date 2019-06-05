@@ -10,7 +10,14 @@ namespace VariousTest.BaseClasses
 {
     public class TestBase
     {
-        public Company AroundTheHorn => new Company() {Id = 4, Name = "Around the Horn", FirstName = "Thomas", LastName = "Hardy", Title = "Sales Representative" } ;
+        public Company AroundTheHorn => new Company()
+        {
+            Id = 4,
+            Name = "Around the Horn",
+            FirstName = "Thomas",
+            LastName = "Hardy",
+            Title = "Sales Representative"
+        } ;
 
         /// <summary>
         /// Person object without SSN
