@@ -67,6 +67,7 @@
     <Compile Include="Traits\TestTraitsAttribute.cs" />
     <Compile Include="EntityUnitTest.cs" />
     <Compile Include="MiscUnitTest.cs" />
+    <Compile Include="OracleUnitTest.cs" />
     <Compile Include="ValidatorUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,6 +76,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OracleDataLibrary\OracleDataLibrary.csproj">
+      <Project>{1905d6ba-6dfb-4fff-8d23-ce79bec51c06}</Project>
+      <Name>OracleDataLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TeamLibrary\TeamLibrary.csproj">
       <Project>{c5b92cbf-bf6c-4626-9042-c6b15bc9ea81}</Project>
       <Name>TeamLibrary</Name>

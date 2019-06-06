@@ -3,7 +3,8 @@
         Get
             Return <SQL>
                     SELECT Cust.CustomerIdentifier,
-                           Cust.CompanyName, Cust.ContactId,
+                           Cust.CompanyName, 
+                           Cust.ContactId,
                            Contacts.FirstName,
                            Contacts.LastName,
                            CT.ContactTitle,

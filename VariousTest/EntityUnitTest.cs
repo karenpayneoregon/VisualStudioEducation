@@ -10,7 +10,7 @@ using VariousTest.Traits;
 
 namespace VariousTest
 {
-    [TestClass(), TestCategory("EF6")]
+    [TestClass(), TestCategory("SQL-Server EF6")]
     public class EntityUnitTest : TestBase
     {
         [TestMethod]
@@ -18,12 +18,22 @@ namespace VariousTest
         {
             var customerIdentifier = 4;
             var ops = new NorthWindDatabaseOperations();
+
+            /*
+             * Return specific properties
+             */
             var customer = ops.GetCompanyByCustomerIdentifier(customerIdentifier);
 
             var comparer = new ObjectsComparer.Comparer<Company>();
 
             var isEqual = comparer.Compare(customer, AroundTheHorn, out var differences);
             Assert.IsTrue(isEqual);
+
+            /*
+             * Demonstrate returning all navigation properties
+             */
+            ops.GetCompanyByCustomerIdentifierTemp(customerIdentifier);
+
         }
         [TestMethod]
         public void GetCompanyWithCountryByIdentifier()
@@ -97,6 +107,13 @@ namespace VariousTest
 
         }
 
+        [TestMethod]
+        public void GetCompanyWithCountryByIdentifierSqlClient()
+        {
+            var customerIdentifier = 4;
+            var ops = new NorthWindDatabaseOperations();
+            ops.GetCustomersByCustomerIdentifierSqlClientDataProvider(customerIdentifier);
 
+        } 
     }
 }

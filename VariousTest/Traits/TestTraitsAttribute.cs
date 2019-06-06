@@ -8,6 +8,7 @@ namespace VariousTest.Traits
     {
         ValidatingSocialSecurity,
         ObjectsComparer,
+        OracleDataProviderRead,
         ExtensionMethods
     }
 
