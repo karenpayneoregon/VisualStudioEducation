@@ -158,8 +158,7 @@ namespace TeamLibrary.EntityFrameworkClasses
                 // deferred execution
                 var query = from company in context.Customers
                     join contact in context.Contacts on company.ContactId equals contact.ContactId
-                    join contactType in context.ContactTypes on contact.ContactId equals contactType
-                        .ContactTypeIdentifier
+                    join contactType in context.ContactTypes on contact.ContactId equals contactType.ContactTypeIdentifier
                     where company.CustomerIdentifier == pIdentifier
                     select company;
 
@@ -185,7 +184,7 @@ namespace TeamLibrary.EntityFrameworkClasses
                 }
 
 
-                var companyQuery = from company in context.Customers
+                IQueryable<Company> companyQuery = from company in context.Customers
                     join contact       in context.Contacts       on company.ContactId                  equals contact.ContactId
                     join contactType   in context.ContactTypes   on contact.ContactId                  equals contactType.ContactTypeIdentifier
                     join country       in context.Countries      on company.Country.CountryIdentifier  equals  country.CountryIdentifier
@@ -201,6 +200,9 @@ namespace TeamLibrary.EntityFrameworkClasses
                         Country = company.Country.Name,
                         CountryId = company.CountryIdentifier.Value
                     };
+
+
+                
 
 
                 return companyQuery.FirstOrDefault();
@@ -224,6 +226,19 @@ namespace TeamLibrary.EntityFrameworkClasses
             using (var context = new NorthWindEntities())
             {
                 context.Entry(contact).State = EntityState.Modified;
+                return context.SaveChanges() == 1;
+            }
+        }
+        /// <summary>
+        /// Insert new Customer
+        /// </summary>
+        /// <param name="pCustomer"></param>
+        /// <returns></returns>
+        public bool InsertCustomer(Customer pCustomer)
+        {
+            using (var context = new NorthWindEntities())
+            {
+                context.Entry(pCustomer).State = EntityState.Added;
                 return context.SaveChanges() == 1;
             }
         }

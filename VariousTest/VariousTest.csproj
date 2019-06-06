@@ -77,6 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NorthWindEntityLibrary\NorthWindEntityLibrary.csproj">
+      <Project>{6B9ADC5F-EF69-4ACC-8C1A-0106F652FD14}</Project>
+      <Name>NorthWindEntityLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OracleDataLibrary\OracleDataLibrary.csproj">
       <Project>{1905d6ba-6dfb-4fff-8d23-ce79bec51c06}</Project>
       <Name>OracleDataLibrary</Name>

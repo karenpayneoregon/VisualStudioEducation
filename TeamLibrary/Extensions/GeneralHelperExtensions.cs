@@ -41,7 +41,8 @@ namespace TeamLibrary.Extensions
             {
                 if (!(string.IsNullOrWhiteSpace(sender)))
                 {
-                    TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
+                    var converter = TypeDescriptor.GetConverter(typeof(T));
+                    // ReSharper disable once PossibleNullReferenceException
                     result = (T)converter.ConvertFrom(sender);
 
                 }

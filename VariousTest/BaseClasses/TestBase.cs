@@ -1,6 +1,8 @@
-﻿using System;
+﻿using NorthWindEntityLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using TeamLibrary.BaseClasses;
@@ -19,6 +21,19 @@ namespace VariousTest.BaseClasses
             Title = "Sales Representative"
         } ;
 
+        public Customer InsertCustomer()
+        {
+            var customer = new Customer
+            {
+                CompanyName = "Miata-land",
+                ContactId = 86,
+                ContactTypeIdentifier = 7,
+                CountryIdentifier = 20
+            };
+
+            return customer;
+        }
+        
         /// <summary>
         /// Person object without SSN
         /// </summary>

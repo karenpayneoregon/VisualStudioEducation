@@ -50,7 +50,7 @@ namespace VariousTest
             var comparer = new ObjectsComparer.Comparer<Company>();
 
             var isEqual = comparer.Compare(customer1, customer, out var differences);
-            Assert.IsTrue(isEqual, 
+            Assert.IsTrue(isEqual,
                 "expected customer country test to be the same");
 
         }
@@ -63,14 +63,22 @@ namespace VariousTest
         [TestMethod]
         public void UpdateCustomerContactFirstLastNameTest()
         {
-            var company = new Company() { ContactIdentifier = 4, FirstName = "Karen", LastName = "Payne"};
+            var company = new Company() { ContactIdentifier = 4, FirstName = "Karen", LastName = "Payne" };
             var ops = new NorthWindDatabaseOperations();
             Assert.IsTrue(ops.UpdateCompanyContactFirstLastName(company));
             company.FirstName = "Thomas";
             company.LastName = "Hardy";
             Assert.IsTrue(ops.UpdateCompanyContactFirstLastName(company));
 
-        } 
+        }
+        [TestMethod]
+        [Ignore]
+        public void InsertNewCustomerTest()
+        {
+            var ops = new NorthWindDatabaseOperations();
+            Assert.IsTrue(ops.InsertCustomer(InsertCustomer()));
+
+        }
         /// <summary>
         /// Test ObjectsComparer functionality
         /// </summary>
@@ -96,7 +104,7 @@ namespace VariousTest
             var diff = differences.FirstOrDefault();
             Assert.IsTrue(diff != null && diff.DifferenceType == DifferenceTypes.ValueMismatch,
                 "expected ValueMismatch");
-            Assert.IsTrue(diff.MemberPath == "FirstName", 
+            Assert.IsTrue(diff.MemberPath == "FirstName",
                 "expected first name");
 
             Assert.IsTrue(diff.Value1 == "Thomas",
@@ -114,6 +122,6 @@ namespace VariousTest
             var ops = new NorthWindDatabaseOperations();
             ops.GetCustomersByCustomerIdentifierSqlClientDataProvider(customerIdentifier);
 
-        } 
+        }
     }
 }
