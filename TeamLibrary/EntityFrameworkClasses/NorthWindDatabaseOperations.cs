@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BaseConnectionLibrary.ConnectionClasses;
 using NorthWindEntityLibrary;
+using QueryLibrary;
 using TeamLibrary.BaseClasses;
 
 namespace TeamLibrary.EntityFrameworkClasses
 {
-    public class NorthWindDatabaseOperations
+    public class NorthWindDatabaseOperations : SqlServerConnection
     {
         /// <summary>
         /// Get customer by primary key, since result is an anonymous type
@@ -52,6 +55,42 @@ namespace TeamLibrary.EntityFrameworkClasses
                     .FirstOrDefault(item => item.Customer.CustomerIdentifier == pIdentifier);
 
             }
+        }
+
+        public CustomerSpecial GetCustomersByCustomerIdentifierSqlClientDataProvider(int pCustomerIdentifier)
+        {
+            DatabaseServer = ".\\SQLEXPRESS";
+            DefaultCatalog = "NorthWindAzureForInserts";
+            var statements = new SelectStatements();
+            var customer = new CustomerSpecial();
+            using (var cn = new SqlConnection {ConnectionString = ConnectionString})
+            {
+                using (var cmd = new SqlCommand {Connection = cn})
+                {
+                    cmd.CommandText = statements.SelectCustomerByCustomerIdentifier;
+                    cmd.Parameters.AddWithValue("@CustomerIdentifier", pCustomerIdentifier);
+                    try
+                    {
+                        cn.Open();
+                        var reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        mHasException = true;
+                        mLastException = e;
+                        throw;
+                    }
+
+                }
+            }
+
+
+            return customer;
         }
 
         public Company GetCompanyByCustomerIdentifier(int pIdentifier)
