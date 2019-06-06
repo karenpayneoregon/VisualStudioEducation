@@ -68,6 +68,7 @@
     <Compile Include="EntityUnitTest.cs" />
     <Compile Include="MiscUnitTest.cs" />
     <Compile Include="OracleUnitTest.cs" />
+    <Compile Include="StringConversions.cs" />
     <Compile Include="ValidatorUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

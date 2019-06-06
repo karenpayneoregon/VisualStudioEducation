@@ -68,6 +68,7 @@
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\ComparableExtensions.cs" />
+    <Compile Include="Extensions\GeneralHelperExtensions.cs" />
     <Compile Include="Extensions\NumericArray.cs" />
     <Compile Include="Extensions\NumericExtensions.cs" />
     <Compile Include="Interfaces\IEntity.cs" />

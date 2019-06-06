@@ -23,7 +23,7 @@ namespace TeamLibrary.Extensions
         public static DateTime ToDate(this string sender)
         {
             var formats = new[] { "dd/MM/yyyy", "d/M/yyyy", "dd-MM-yyyy", "MM/dd/yyyy" };
-            DateTime dateValue = DateTime.MinValue;
+            var dateValue = DateTime.MinValue;
 
             DateTime.TryParseExact(sender, formats, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out dateValue);
 
