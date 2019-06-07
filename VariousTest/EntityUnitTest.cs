@@ -14,6 +14,38 @@ namespace VariousTest
     [TestClass(), TestCategory("SQL-Server EF6")]
     public class EntityUnitTest : TestBase
     {
+        /// <summary>
+        /// Demonstration to show how to get the current executing test method
+        /// </summary>
+        [TestInitialize]
+        public void Init()
+        {
+            Console.WriteLine(TestContext.TestName);
+        }
+
+        [ClassInitialize()]
+        public static void MyClassInitialize(TestContext testContext)
+        {
+            TestResults = new List<TestContext>();
+        }
+        /// <summary>
+        /// Provides access in this case to see if a test passed or failed.
+        /// Examine properties of testResults to get an idea what information
+        /// is available perhaps to write to a test log file.
+        /// </summary>
+        [ClassCleanup()]
+        public static void Cleanup()
+        {
+            if (TestResults.All(t => t.CurrentTestOutcome == UnitTestOutcome.Passed || t.CurrentTestOutcome == UnitTestOutcome.Inconclusive))
+            {
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine();
+            }
+
+        }
         [TestMethod]
         public void CompareEntityObjectToLocalInstanceTest()
         {

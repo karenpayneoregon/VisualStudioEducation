@@ -10,11 +10,25 @@ using TeamLibrary.BaseClasses;
 using TeamLibrary.Classes;
 using System.Data.SqlClient;
 using System.Runtime.CompilerServices;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace VariousTest.BaseClasses
 {
     public class TestBase : SqlServerConnection
     {
+        protected TestContext TestContextInstance;
+        public TestContext TestContext
+        {
+            get => TestContextInstance;
+            set
+            {
+                TestContextInstance = value;
+                TestResults.Add(TestContext);
+            }
+        }
+
+        public static IList<TestContext> TestResults;
+
         public Company AroundTheHorn => new Company()
         {
             Id = 4,
