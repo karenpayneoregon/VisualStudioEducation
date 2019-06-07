@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using BaseConnectionLibrary.ConnectionClasses;
@@ -58,7 +59,7 @@ namespace TeamLibrary.EntityFrameworkClasses
             }
         }
 
-        public CustomerSpecial GetCustomersByCustomerIdentifierSqlClientDataProvider(int pCustomerIdentifier)
+        public CustomerSpecial GetCustomersByCustomerIdentifierSqlClientDataProvider(int pCustomerIdentifier, [CallerMemberName]string name = "")
         {
             DatabaseServer = ".\\SQLEXPRESS";
             DefaultCatalog = "NorthWindAzureForInserts";
@@ -168,8 +169,29 @@ namespace TeamLibrary.EntityFrameworkClasses
                 Console.WriteLine();
             }
 
+            /*
+             * Uses default for LazyLoadingEnabled
+             */
+            using (var context = new NorthWindEntities())
+            {
+                var test = context.Customers;
+                var result4 = test.ToList();
+                Console.WriteLine();
+            }
 
             return new Customer();
+        }
+
+        public int CountryCountForCustomers(int pCountryCode)
+        {
+            using (var context = new NorthWindEntities())
+            {
+                return  context.Entry(context.Countries.Find(pCountryCode))
+                    .Collection(item => item.Customers)
+                    .Query()
+                    .Count();
+            }
+
         }
 
         /// <summary>

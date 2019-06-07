@@ -5,12 +5,15 @@ using System.Linq;
 using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
+using BaseConnectionLibrary.ConnectionClasses;
 using TeamLibrary.BaseClasses;
 using TeamLibrary.Classes;
+using System.Data.SqlClient;
+using System.Runtime.CompilerServices;
 
 namespace VariousTest.BaseClasses
 {
-    public class TestBase
+    public class TestBase : SqlServerConnection
     {
         public Company AroundTheHorn => new Company()
         {
@@ -47,6 +50,37 @@ namespace VariousTest.BaseClasses
         protected readonly double[] DoubleArrayValidator = { 2.4, 0, 0, 6.9, 0, 0, 1.3, 0, 1 };
         protected readonly string[] StringArrayAllDoubles = { "2.6", "4.7", "5", "6", "8.98", "12", "1", "99.2", "-1" };
 
+        /// <summary>
+        /// Used to validate return value from a Entity Framework query
+        /// </summary>
+        /// <param name="pCountryCodeIdentifier"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public int CountCountry(int pCountryCodeIdentifier, [CallerMemberName]string name = "")
+        {
+            if (name != "CountWithoutLoadingData")
+            {
+                throw new Exception("Just for fun");
+            }
 
+            DatabaseServer = ".\\SQLEXPRESS";
+            DefaultCatalog = "NorthWindAzureForInserts";
+
+            var selectStatement =
+                "SELECT  COUNT(Customers.CompanyName) " + 
+                "FROM Countries " + 
+                "INNER JOIN Customers ON Countries.CountryIdentifier = Customers.CountryIdentifier " + 
+                $"WHERE (Countries.CountryIdentifier = {pCountryCodeIdentifier})";
+
+            using (var cn = new SqlConnection {ConnectionString = ConnectionString})
+            {
+                using (var cmd = new SqlCommand {Connection = cn, CommandText = selectStatement})
+                {
+                    cn.Open();
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+
+        }
     }
 }

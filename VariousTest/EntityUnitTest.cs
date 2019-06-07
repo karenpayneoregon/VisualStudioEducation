@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TeamLibrary.BaseClasses;
 using TeamLibrary.EntityFrameworkClasses;
@@ -35,13 +36,27 @@ namespace VariousTest
             ops.GetCompanyByCustomerIdentifierTemp(customerIdentifier);
 
         }
+        /// <summary>
+        /// Note a real test but a entry point to demo lazying loading.
+        /// </summary>
         [TestMethod]
+        [TestTraits(Trait.EntityFrameworkLazingEager)]
         public void GetCompanyWithCountryByIdentifier_EagerLoading()
         {
             var customerIdentifier = 4;
             var ops = new NorthWindDatabaseOperations();
             ops.GetCompanyByCustomerIdentifierEager(customerIdentifier);
+        } 
+        [TestMethod]
+        public void CountWithoutLoadingData()
+        { 
+            var countryIdentifier = 19;
+            var ops = new NorthWindDatabaseOperations();
+            var countryCountEntityFramework  = ops.CountryCountForCustomers(countryIdentifier);
+            var countryCountSqlClient = CountCountry(countryIdentifier);
 
+            Assert.IsTrue(countryCountSqlClient == countryCountEntityFramework,
+                "Expected same count between EF and SqlClient");
         } 
         [TestMethod]
         public void GetCompanyWithCountryByIdentifier()
