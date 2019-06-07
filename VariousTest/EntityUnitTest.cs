@@ -36,6 +36,14 @@ namespace VariousTest
 
         }
         [TestMethod]
+        public void GetCompanyWithCountryByIdentifier_EagerLoading()
+        {
+            var customerIdentifier = 4;
+            var ops = new NorthWindDatabaseOperations();
+            ops.GetCompanyByCustomerIdentifierEager(customerIdentifier);
+
+        } 
+        [TestMethod]
         public void GetCompanyWithCountryByIdentifier()
         {
             var customerIdentifier = 4;

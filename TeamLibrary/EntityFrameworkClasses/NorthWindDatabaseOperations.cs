@@ -71,7 +71,8 @@ namespace TeamLibrary.EntityFrameworkClasses
                     Country = new Country(),
                     CustomerIdentifier = pCustomerIdentifier,
                     Contact = new Contact()
-                }, Contact = new Contact()
+                },
+                Contact = new Contact()
             };
 
             using (var cn = new SqlConnection {ConnectionString = ConnectionString})
@@ -96,9 +97,6 @@ namespace TeamLibrary.EntityFrameworkClasses
                             customer.Customer.CountryIdentifier = reader.GetInt32(6);
                             customer.Customer.Country.CountryIdentifier = reader.GetInt32(6);
                             customer.Customer.Country.Name = reader.GetString(7);
-
-
-
                         }
                     }
                     catch (Exception e)
@@ -114,6 +112,66 @@ namespace TeamLibrary.EntityFrameworkClasses
 
             return customer;
         }
+        /// <summary>
+        /// Demonstrates
+        /// * loading navigation properties
+        /// * not loading navigation properties
+        ///
+        /// done via
+        /// context.Configuration.LazyLoadingEnabled = false;
+        /// </summary>
+        /// <param name="pIdentifier"></param>
+        /// <returns></returns>
+        public Customer GetCompanyByCustomerIdentifierEager(int pIdentifier)
+        {
+            /*
+             * Country is not null for all - note .Include
+             */
+            using (var context = new NorthWindEntities())
+            {
+                context.Configuration.LazyLoadingEnabled = false;
+                var test = context.Customers.Include(cust => cust.Country);
+                var result1 = test.ToList();
+                Console.WriteLine();
+            }
+
+            /*
+             * NEVER DO THIS even though it works.
+             */
+            using (var context = new NorthWindEntities())
+            {
+                context.Configuration.LazyLoadingEnabled = false;
+                var test = context.Customers.Include("Country");
+                var result1a = test.ToList();
+                Console.WriteLine();
+            }
+
+            /*
+             * Country is not null for all
+             */
+            using (var context = new NorthWindEntities())
+            {
+                context.Configuration.LazyLoadingEnabled = true;
+                var test = context.Customers;
+                var result2 = test.ToList();
+                Console.WriteLine();
+            }
+
+            /*
+             * Country is null for all
+             */
+            using (var context = new NorthWindEntities())
+            {
+                context.Configuration.LazyLoadingEnabled = false;
+                var test = context.Customers;
+                var result3 = test.ToList();
+                Console.WriteLine();
+            }
+
+
+            return new Customer();
+        }
+
         /// <summary>
         /// Get customer by primary key, use a custom class to get specific fields.
         /// </summary>
@@ -168,11 +226,12 @@ namespace TeamLibrary.EntityFrameworkClasses
             }
         }
         /// <summary>
-        /// Get a single customer (using Company entity/table) by primary key 
+        /// Get a single customer by primary key using user define class which
+        /// has a partial property/field list and a custom Comparer overriding Equals.
         /// </summary>
         /// <param name="pIdentifier">Valid key to locate</param>
         /// <param name="pLog">true to log EF generation to the test output window</param>
-        /// <returns></returns>
+        /// <returns>Valid customer if found by primary key</returns>
         public Company GetCompanyWithCountryByIdentifier(int pIdentifier, bool pLog = false)
         {
 
@@ -183,11 +242,13 @@ namespace TeamLibrary.EntityFrameworkClasses
                     context.Database.Log = Console.Write;
                 }
 
-
-                IQueryable<Company> companyQuery = from company in context.Customers
-                    join contact       in context.Contacts       on company.ContactId                  equals contact.ContactId
-                    join contactType   in context.ContactTypes   on contact.ContactId                  equals contactType.ContactTypeIdentifier
-                    join country       in context.Countries      on company.Country.CountryIdentifier  equals  country.CountryIdentifier
+                // inspect this variable before hitting the line below with FirstOrDefault.
+                // talk about using var
+                IQueryable<Company> companyQuery = 
+                    from company in context.Customers
+                    join contact       in context.Contacts       on company.ContactId       equals contact.ContactId
+                    join contactType   in context.ContactTypes   on contact.ContactId       equals contactType.ContactTypeIdentifier
+                    join country       in context.Customers   on company.CountryIdentifier  equals  country.CountryIdentifier
                     where company.CustomerIdentifier == pIdentifier
                     select new Company
                     {
@@ -202,10 +263,10 @@ namespace TeamLibrary.EntityFrameworkClasses
                     };
 
 
-                
+                // inspect this line before returning to the caller.
+                var result = companyQuery.FirstOrDefault();
 
-
-                return companyQuery.FirstOrDefault();
+                return result;
 
             }
         }
