@@ -258,7 +258,6 @@ namespace TeamLibrary.EntityFrameworkClasses
         /// <returns>Valid customer if found by primary key</returns>
         public Company GetCompanyWithCountryByIdentifier(int pIdentifier, bool pLog = false)
         {
-
             using (var context = new NorthWindEntities())
             {
                 if (pLog)
@@ -286,14 +285,13 @@ namespace TeamLibrary.EntityFrameworkClasses
                         CountryId = company.CountryIdentifier.Value
                     };
 
-
                 // inspect this line before returning to the caller.
                 var result = companyQuery.FirstOrDefault();
 
                 return result;
-
             }
         }
+
         /// <summary>
         /// Save a detached customer
         /// </summary>
