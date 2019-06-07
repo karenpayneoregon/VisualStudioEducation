@@ -43,5 +43,10 @@ namespace SimpleEntityFrameworkExampleUnitTestProject
             Console.WriteLine();
         } 
 
+        [TestMethod]
+        public void DbSetAttachTest() 
+        {
+            //https://www.entityframeworktutorial.net/EntityFramework5/attach-disconnected-entity-graph.aspx
+        }
     }
 }
