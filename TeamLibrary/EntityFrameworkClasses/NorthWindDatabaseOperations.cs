@@ -59,7 +59,7 @@ namespace TeamLibrary.EntityFrameworkClasses
             }
         }
 
-        public CustomerSpecial GetCustomersByCustomerIdentifierSqlClientDataProvider(int pCustomerIdentifier, [CallerMemberName]string name = "")
+        public CustomerSpecial GetCustomersByCustomerIdentifierSqlClientDataProvider(int pCustomerIdentifier)
         {
             DatabaseServer = ".\\SQLEXPRESS";
             DefaultCatalog = "NorthWindAzureForInserts";
@@ -184,6 +184,8 @@ namespace TeamLibrary.EntityFrameworkClasses
 
         public int CountryCountForCustomers(int pCountryCode)
         {
+
+
             using (var context = new NorthWindEntities())
             {
                 return  context.Entry(context.Countries.Find(pCountryCode))

@@ -16,6 +16,10 @@ namespace VariousTest.BaseClasses
 {
     public class TestBase : SqlServerConnection
     {
+        /// <summary>
+        /// Used to store information that is provided to unit tests.
+        /// https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting.testcontext?view=mstest-net-1.2.0
+        /// </summary>
         protected TestContext TestContextInstance;
         public TestContext TestContext
         {

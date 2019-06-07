@@ -139,6 +139,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\NorthWindScript.sql" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
