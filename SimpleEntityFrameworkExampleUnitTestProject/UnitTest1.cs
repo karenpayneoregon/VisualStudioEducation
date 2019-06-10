@@ -8,7 +8,7 @@ namespace SimpleEntityFrameworkExampleUnitTestProject
     [TestClass(), TestCategory("EF6 - Simple")]
     public class UnitTest1 : TestBase
     {
-        #region Custome name BAD
+        #region Customer name BAD
         [TestMethod]
         public void GetCustomerByIdentifierUnrealisticSuccessfulTest()
         {

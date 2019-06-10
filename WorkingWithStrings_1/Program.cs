@@ -14,7 +14,21 @@ namespace WorkingWithStrings_1
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+            FindExample();
             Console.ReadLine();
+        }
+
+        static void FindExample()
+        {
+            string findName = "Mark";
+            string[] names = new string[] {"Joe", "Mark","Anne"};
+            if (names.Any(name => name == findName))
+            {
+                Console.WriteLine($"Found {findName}");
+            }
+
+            
+
         }
 
         /// <summary>
@@ -26,7 +40,6 @@ namespace WorkingWithStrings_1
             string lastName = "Payne";
 
             Console.WriteLine(firstName + " " + lastName);
-
         }
         /// <summary>
         /// Implicit assignment
@@ -37,7 +50,28 @@ namespace WorkingWithStrings_1
             var lastName = "Payne";
 
             Console.WriteLine($"{firstName} {lastName}");
+
+            
+
         }
+
+        static void GenerateEvent()
+        {
+            var test = new Counter();
+        }
+    }
+
+    class Counter
+    {
+        public event EventHandler ThresholdReached;
+
+        protected virtual void OnThresholdReached(EventArgs e)
+        {
+            EventHandler handler = ThresholdReached;
+            handler?.Invoke(this, e);
+        }
+
+        // provide remaining implementation for the class
     }
 
 }
