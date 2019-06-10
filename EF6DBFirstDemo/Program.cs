@@ -97,15 +97,15 @@ namespace EF6DBFirstDemo
                 context.Database.Log = Console.WriteLine;
 
                 //Retrieve students whose name is Bill - Linq-to-Entities Query Syntax
-                var students = (from s in context.Students
-                                where s.StudentName == "Bill"
-                                select s).ToList();
+                var studentsList = (from students in context.Students 
+                                where students.StudentName == "Bill"
+                                select students).ToList();
 
                 //Retrieve students with the same name - Linq-to-Entities Method Syntax
                 var studentsWithSameName = context.Students
                     .GroupBy(s => s.StudentName)
-                    .Where(g => g.Count() > 1)
-                    .Select(g => g.Key);
+                    .Where(stringStudent => stringStudent.Count() > 1) 
+                    .Select(groupStudent => groupStudent.Key);
 
                 Console.WriteLine("Students with same name");
                 foreach (var stud in studentsWithSameName)
@@ -146,7 +146,7 @@ namespace EF6DBFirstDemo
             {
                 context.Database.Log = Console.Write;
 
-                var student = context.Students.Where(s => s.StudentID == 1).FirstOrDefault<Student>();
+                var student = context.Students.Where(studentItem => studentItem.StudentID == 1).FirstOrDefault();
 
                 Console.WriteLine("*** Retrieve standard from the database ***");
                 Standard std = student.Standard;
@@ -164,13 +164,12 @@ namespace EF6DBFirstDemo
                 context.Database.Log = Console.Write;
 
                 Student std = context.Students
-                    .Where(s => s.StudentID == 1)
-                    .FirstOrDefault<Student>();
+                    .FirstOrDefault(studentItem => studentItem.StudentID == 1);
 
-                //Loading Standard for Student (seperate SQL query)
+                //Loading Standard for Student (separate SQL query)
                 context.Entry(std).Reference(s => s.Standard).Load();
 
-                //Loading Courses for Student (seperate SQL query)
+                //Loading Courses for Student (separate SQL query)
                 context.Entry(std).Collection(s => s.Courses).Load();
             }
 
@@ -223,8 +222,8 @@ namespace EF6DBFirstDemo
 
             using (var context = new SchoolDBEntities())
             {
-                var student = context.Students.Where(s => s.StudentName == "Bill")
-                        .FirstOrDefault<Student>();
+                var student = context.Students
+                        .FirstOrDefault(s => s.StudentName == "Bill");
 
                 Console.WriteLine("Proxy Type: {0}", student.GetType().Name);
                 Console.WriteLine("Underlying Entity Type: {0}", student.GetType().BaseType);
@@ -234,8 +233,8 @@ namespace EF6DBFirstDemo
 
                 Console.WriteLine("Proxy Creation Disabled");
 
-                var student1 = context.Students.Where(s => s.StudentName == "Steve")
-                        .FirstOrDefault<Student>();
+                var student1 = context.Students.Where(studentItem => studentItem.StudentName == "Steve")
+                        .FirstOrDefault();
 
                 Console.WriteLine("Entity Type: {0}", student1.GetType().Name);
             }
@@ -409,7 +408,7 @@ namespace EF6DBFirstDemo
 
                         transaction.Commit();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         transaction.Rollback();
                         Console.WriteLine("Error occurred.");
@@ -478,7 +477,7 @@ namespace EF6DBFirstDemo
 
                     Console.WriteLine("Student saved successfully.");
                 }
-                catch (DbUpdateConcurrencyException ex)
+                catch (DbUpdateConcurrencyException)
                 {
                     Console.WriteLine("Concurrency Exception Occurred.");
                 }
