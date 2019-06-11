@@ -38,7 +38,7 @@ namespace SimpleEntityFrameworkExampleUnitTestProject.BaseClasses
             }
         }
 
-        public string GetCustomerNameByIdentifier(int pCustomerIdentifier)
+        public string GetCustomerNameByIdentifierUsingDataProvider(int pCustomerIdentifier)
         {
             DatabaseServer = ".\\SQLEXPRESS";
             DefaultCatalog = "OrderingRows1";
@@ -57,5 +57,42 @@ namespace SimpleEntityFrameworkExampleUnitTestProject.BaseClasses
                 }
             }
         }
+
+        public string GetCustomerNameByIdentifierUsingEntityFramework_1(int pCustomerIdentifier) 
+        {
+            Customer foundCustomer;
+
+            using (var context = new SimpleEntities())
+            {
+                foundCustomer = context.Customers.FirstOrDefault(customer => customer.CustomerIdentifier == pCustomerIdentifier);
+            }
+
+            if (foundCustomer != null)
+            {
+                return foundCustomer.CompanyName;
+            }
+            else
+            {
+                return "";
+            }
+        }
+        /// <summary>
+        /// Using ValueTuple
+        /// </summary>
+        /// <param name="pCustomerIdentifier"></param>
+        /// <returns></returns>
+        public (string companyName, bool success) GetCustomerNameByIdentifierUsingEntityFramework_2(int pCustomerIdentifier)
+        {
+            Customer foundCustomer;
+
+            using (var context = new SimpleEntities())
+            {
+                foundCustomer = context.Customers.FirstOrDefault(customer => customer.CustomerIdentifier == pCustomerIdentifier);
+            }
+
+            return foundCustomer != null ? (foundCustomer.CompanyName, true) : (foundCustomer.CompanyName, false);
+        }
+
+
     }
 }

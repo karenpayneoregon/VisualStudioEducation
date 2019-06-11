@@ -11,6 +11,7 @@ using BaseConnectionLibrary.ConnectionClasses;
 using NorthWindEntityLibrary;
 using QueryLibrary;
 using TeamLibrary.BaseClasses;
+using TeamLibrary.EntityFrameworkUtilities;
 
 namespace TeamLibrary.EntityFrameworkClasses
 {
@@ -323,6 +324,25 @@ namespace TeamLibrary.EntityFrameworkClasses
             {
                 context.Entry(pCustomer).State = EntityState.Added;
                 return context.SaveChanges() == 1;
+            }
+        }
+
+        public void RollbackExample()
+        {
+            var ops = new EntityFrameworkUtilities.EntityFrameworkUtilities();
+            using (var context = new NorthWindEntities())
+            {
+                Department dept = context.Departments.Create();
+                dept.Name = "New Added Department";
+                dept.Code = "AAA";
+                context.Departments.Add(dept);
+                context.SaveChanges();
+
+                var deptUpdate = context.Departments.Find(1);
+                deptUpdate.Code = "BBB";
+                ops.UndoingChangesDbEntityPropertyLevel(context, dept);
+                context.SaveChanges();
+
             }
         }
     }

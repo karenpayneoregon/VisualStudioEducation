@@ -25,7 +25,7 @@ namespace SimpleEntityFrameworkExampleUnitTestProject
         public void GetCustomerByIdentifierBetterSuccessfulTest()
         {
             var customerIdentifier = 4;
-            var expectedName = GetCustomerNameByIdentifier(customerIdentifier);
+            var expectedName = GetCustomerNameByIdentifierUsingDataProvider(customerIdentifier);
             var actualName = GetCustomerByIdentifier(4).CompanyName;
 
             // uncomment to break this test method
@@ -34,7 +34,20 @@ namespace SimpleEntityFrameworkExampleUnitTestProject
             Assert.IsTrue(expectedName == actualName,
                 $"Expected --> '{expectedName}' to equal '{actualName}'");
         }
+        /// <summary>
+        /// Using ValueTuple return customer name or empty string which can be
+        /// verified using the second variable in th ValueTuple
+        /// </summary>
+        [TestMethod]
+        public void GetCustomerByIdentifierBetterSuccessfulValueTupleTest()
+        {
+            var customerIdentifier = 4;
+            var (companyName, success) = GetCustomerNameByIdentifierUsingEntityFramework_2(customerIdentifier);
+            Assert.IsTrue(success);
+        }
+
         #endregion
+
         [TestMethod]
         public void GetAllProductsTest()
         {

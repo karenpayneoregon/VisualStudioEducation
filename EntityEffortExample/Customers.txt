@@ -1,0 +1,10 @@
+﻿1,Alfreds Futterkiste
+2,Ana Trujillo Emparedados y helados
+3,Antonio Moreno Taquería
+4,Around the Horn
+5,Berglunds snabbköp
+6,Blauer See Delikatessen
+7,Blondesddsl père et fils
+8,Bólido Comidas preparadas
+9,Bon app'
+10,B's Beverages

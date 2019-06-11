@@ -11,6 +11,7 @@ using TeamLibrary.Classes;
 using System.Data.SqlClient;
 using System.Runtime.CompilerServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static System.String;
 
 namespace VariousTest.BaseClasses
 {
@@ -99,6 +100,23 @@ namespace VariousTest.BaseClasses
                 }
             }
 
+        }
+        protected void showComparison(string one, string two)
+        {
+            int compareLinguistic = Compare(one, two, StringComparison.InvariantCulture);
+            int compareOrdinal = Compare(one, two, StringComparison.Ordinal);
+            if (compareLinguistic < 0)
+                Console.WriteLine($"<{one}> is less than <{two}> using invariant culture");
+            else if (compareLinguistic > 0)
+                Console.WriteLine($"<{one}> is greater than <{two}> using invariant culture");
+            else
+                Console.WriteLine($"<{one}> and <{two}> are equivalent in order using invariant culture");
+            if (compareOrdinal < 0)
+                Console.WriteLine($"<{one}> is less than <{two}> using ordinal comparison");
+            else if (compareOrdinal > 0)
+                Console.WriteLine($"<{one}> is greater than <{two}> using ordinal comparison");
+            else
+                Console.WriteLine($"<{one}> and <{two}> are equivalent in order using ordinal comparison");
         }
     }
 }

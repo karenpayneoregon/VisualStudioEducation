@@ -70,6 +70,7 @@
     <Compile Include="MiscUnitTest.cs" />
     <Compile Include="OracleUnitTest.cs" />
     <Compile Include="StringConversions.cs" />
+    <Compile Include="ColdFusionExtensionsTest.cs" />
     <Compile Include="ValidatorUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,6 +79,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ColdFusionLibrary\ColdFusionLibrary.csproj">
+      <Project>{7d2c8289-8bbd-4f72-8a4f-519754ea87e3}</Project>
+      <Name>ColdFusionLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NorthWindEntityLibrary\NorthWindEntityLibrary.csproj">
       <Project>{6B9ADC5F-EF69-4ACC-8C1A-0106F652FD14}</Project>
       <Name>NorthWindEntityLibrary</Name>

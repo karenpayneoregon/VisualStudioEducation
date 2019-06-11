@@ -62,6 +62,7 @@
     <Compile Include="Diagnostics\Verify.cs" />
     <Compile Include="EntityFrameworkClasses\CustomerSpecial.cs" />
     <Compile Include="EntityFrameworkClasses\NorthWindDatabaseOperations.cs" />
+    <Compile Include="EntityFrameworkUtilities\EntityFrameworkUtilities.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\DataCommandParameterExtensions.cs" />
     <Compile Include="Extensions\DataExtensions.cs" />

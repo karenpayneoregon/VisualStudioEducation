@@ -9,6 +9,7 @@ namespace VariousTest.Traits
         ValidatingSocialSecurity,
         ObjectsComparer,
         OracleDataProviderRead,
+        EntityFrameworkRollBack,
         EntityFrameworkLazingEager,
         ExtensionMethods
     }

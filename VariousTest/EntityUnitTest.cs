@@ -178,5 +178,13 @@ namespace VariousTest
             ops.GetCustomersByCustomerIdentifierSqlClientDataProvider(customerIdentifier);
 
         }
+        [TestMethod]
+        [TestTraits(Trait.EntityFrameworkRollBack)]
+        [Ignore]
+        public void RollbackTest()
+        {
+            var ops = new NorthWindDatabaseOperations();
+            ops.RollbackExample();
+        } 
     }
 }
