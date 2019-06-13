@@ -32,7 +32,7 @@ namespace VariousTest
         [TestMethod]
         public void ValidatePersonMissingFirstLastNameTest()
         {
-            var expectedErrorMessages = new string[]
+            var expectedErrorMessages = new[]
             {
                 "Contact FirstName is required",
                 "Contact LastName is required"
@@ -57,7 +57,7 @@ namespace VariousTest
         {
             var person = new Person()
             {
-                SSN = "12345678".Replace("-",""),
+                Ssn = "12345678".Replace("-",""),
                 FirstName = "Karen",
                 LastName = "Payne",
                 BirthDate = new DateTime(1956, 9, 24)
