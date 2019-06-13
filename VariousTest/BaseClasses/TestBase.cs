@@ -11,6 +11,7 @@ using TeamLibrary.Classes;
 using System.Data.SqlClient;
 using System.Runtime.CompilerServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TeamLibrary.Extensions;
 using static System.String;
 
 namespace VariousTest.BaseClasses
@@ -42,6 +43,13 @@ namespace VariousTest.BaseClasses
             LastName = "Hardy",
             Title = "Sales Representative"
         } ;
+
+        public Person1 PersonOne => new Person1()
+        {
+            FirstName = "Karen",
+            LastName = "Payne",
+            AllottedTime = "07:35".ToTimeSpan()
+        };
 
         public Customer InsertCustomer()
         {

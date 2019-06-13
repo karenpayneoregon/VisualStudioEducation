@@ -30,5 +30,14 @@ namespace TeamLibrary.Extensions
             return dateValue;
 
         }
+        /// <summary>
+        /// Convert string to a TimeSpan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns>If string can not be converted return 00:00, else return string to a TimeSpan object</returns>
+        public static TimeSpan ToTimeSpan(this string sender)
+        {
+            return !TimeSpan.TryParse(sender, out var time) ? TimeSpan.Parse("00:00") : time;
+        }
     }
 }
