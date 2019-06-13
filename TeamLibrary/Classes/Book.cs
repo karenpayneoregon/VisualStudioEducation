@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeamLibrary.Enumerations;
 using TeamLibrary.Validators.Rules;
 
 namespace TeamLibrary.Classes
@@ -15,6 +16,9 @@ namespace TeamLibrary.Classes
 
         [Required(ErrorMessage = "{0} is required")]
         public string ISBN { get; set; }
+
+        [RequiredEnum(ErrorMessage = "{0} is required.")]
+        public BookCategory Category { get; set; }
 
         [ListHasElements(ErrorMessage = "{0} must contain an element")]
         public List<string> NotesList { get; set; }

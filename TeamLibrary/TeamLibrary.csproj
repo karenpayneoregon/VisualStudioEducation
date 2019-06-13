@@ -66,6 +66,7 @@
     <Compile Include="EntityFrameworkClasses\CustomerSpecial.cs" />
     <Compile Include="EntityFrameworkClasses\NorthWindDatabaseOperations.cs" />
     <Compile Include="EntityFrameworkUtilities\EntityFrameworkUtilities.cs" />
+    <Compile Include="Enumerations\BookCategory.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\DataCommandParameterExtensions.cs" />
     <Compile Include="Extensions\DataExtensions.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Validators\EntityValidationResult.cs" />
     <Compile Include="Validators\EntityValidator.cs" />
     <Compile Include="Validators\Rules\ListHasElements.cs" />
+    <Compile Include="Validators\Rules\RequiredEnumAttribute.cs" />
     <Compile Include="Validators\Rules\SocialSecurityAttribute.cs" />
     <Compile Include="Validators\ValidationHelper.cs" />
   </ItemGroup>

@@ -7,6 +7,7 @@ using LanguageFeatures.Classes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TeamLibrary.BaseClasses;
 using TeamLibrary.Classes;
+using TeamLibrary.Enumerations;
 using TeamLibrary.Extensions;
 using TeamLibrary.Validators;
 using VariousTest.BaseClasses;
@@ -113,7 +114,7 @@ namespace VariousTest
             var book = new Book()
             {
                 Title = "One Giant Leap: The Impossible Mission That Flew Us to the Moon",
-                ISBN = "10: 1501106295",
+                ISBN = "10: 1501106295", Category =  BookCategory.Adventure,
                 NotesList = new List<string>() { "Like page 5" }
             };
 
@@ -121,6 +122,21 @@ namespace VariousTest
 
             Assert.IsTrue(validationResult.HasError == false,
                 "Expected good book");
+        }
+        [TestMethod]
+        public void ValidateEnumIsAssignedTest()
+        {
+            var book = new Book()
+            {
+                Title = "One Giant Leap: The Impossible Mission That Flew Us to the Moon",
+                ISBN = "10: 1501106295",
+                NotesList = new List<string>() { "Like page 5" }
+            };
+
+            var validationResult = ValidationHelper.ValidateEntity(book);
+
+            Assert.IsTrue(validationResult.HasError && validationResult.Errors[0].ErrorMessage == "Category is required.",
+                "Expected rule violation on category of book");
         } 
     }
 }
