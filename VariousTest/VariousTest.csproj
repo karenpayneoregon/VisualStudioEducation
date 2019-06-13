@@ -83,6 +83,10 @@
       <Project>{7d2c8289-8bbd-4f72-8a4f-519754ea87e3}</Project>
       <Name>ColdFusionLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LanguageFeatures\LanguageFeatures.csproj">
+      <Project>{2A610606-7415-4ECB-BBC2-D7A53C7F9359}</Project>
+      <Name>LanguageFeatures</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NorthWindEntityLibrary\NorthWindEntityLibrary.csproj">
       <Project>{6B9ADC5F-EF69-4ACC-8C1A-0106F652FD14}</Project>
       <Name>NorthWindEntityLibrary</Name>

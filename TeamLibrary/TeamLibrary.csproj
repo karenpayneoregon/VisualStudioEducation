@@ -55,6 +55,7 @@
     <Compile Include="BaseClasses\Company.cs" />
     <Compile Include="BaseClasses\Person.cs" />
     <Compile Include="Classes\AuditLog.cs" />
+    <Compile Include="Classes\Book.cs" />
     <Compile Include="Classes\Person.cs" />
     <Compile Include="Classes\Person1.cs" />
     <Compile Include="Diagnostics\AndArgumentConstraint.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Extensions\GeneralHelperExtensions.cs" />
     <Compile Include="Extensions\NumericArray.cs" />
     <Compile Include="Extensions\NumericExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Validators\EntityValidationResult.cs" />
     <Compile Include="Validators\EntityValidator.cs" />
+    <Compile Include="Validators\Rules\ListHasElements.cs" />
     <Compile Include="Validators\Rules\SocialSecurityAttribute.cs" />
     <Compile Include="Validators\ValidationHelper.cs" />
   </ItemGroup>

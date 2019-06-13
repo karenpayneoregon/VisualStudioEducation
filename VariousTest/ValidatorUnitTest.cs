@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using LanguageFeatures.Classes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TeamLibrary.BaseClasses;
 using TeamLibrary.Classes;
@@ -93,6 +94,33 @@ namespace VariousTest
             var validationResult = ValidationHelper.ValidateEntity(PersonOne);
             Assert.IsTrue(validationResult.HasError);
             Assert.IsTrue(validationResult.Errors[0].ErrorMessage == "Time must be between 13:00 to 23:59");
+        } 
+        /// <summary>
+        /// Validate SSN and PIN
+        /// </summary>
+        [TestMethod]
+        public void ClaimRecordValidSsnAndPinTest()
+        {
+            var claimRecord = new ClaimRecord() {Ssn = "123456789", Pin = "1234"};
+            var validationResult = ValidationHelper.ValidateEntity(claimRecord);
+
+            Assert.IsTrue(validationResult.HasError == false, 
+                "Expected good SSN and PIN");
+        } 
+        [TestMethod]
+        public void ValidateListPropertyHasItemsTest()
+        {
+            var book = new Book()
+            {
+                Title = "One Giant Leap: The Impossible Mission That Flew Us to the Moon",
+                ISBN = "10: 1501106295",
+                NotesList = new List<string>() { "Like page 5" }
+            };
+
+            var validationResult = ValidationHelper.ValidateEntity(book);
+
+            Assert.IsTrue(validationResult.HasError == false,
+                "Expected good book");
         } 
     }
 }
