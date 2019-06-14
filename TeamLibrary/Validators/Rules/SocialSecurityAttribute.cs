@@ -16,6 +16,10 @@ namespace TeamLibrary.Validators.Rules
 
         public override bool IsValid(object value)
         {
+            if (value is null)
+            {
+                return false;
+            }
             if (value.ToString().Length == 9 && Regex.IsMatch(value.ToString(), @"^\d{9}$"))
             {
                 return true;

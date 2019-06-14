@@ -35,7 +35,7 @@ namespace ColdFusionLibrary
         }
         public static int Find(this string sender, string value)
         {
-            return sender.IndexOf("the") + 1;
+            return sender.IndexOf("the", StringComparison.Ordinal) + 1;
         }
         public static int FindNoCase(this string sender, string value)
         {
@@ -49,7 +49,10 @@ namespace ColdFusionLibrary
 
         public static double Val(this string sender)
         {
-            var posItem = sender.Select((c,i) => new {letter = c, index = i}).FirstOrDefault(item => char.IsLetter(item.letter));
+
+            var posItem = sender.Select((singleChar,index) => new {letter = singleChar, index = index}) 
+                .FirstOrDefault(item => char.IsLetter(item.letter));
+
             /*
              * No characters, proceed to conversion
              */
