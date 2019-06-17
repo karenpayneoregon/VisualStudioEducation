@@ -140,6 +140,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\NorthWindScript.sql" />
+    <Content Include="Scripts\NorthWindScriptForTeaching.txt" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
